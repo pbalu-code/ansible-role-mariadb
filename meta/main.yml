@@ -14,9 +14,9 @@ galaxy_info:
         - 31
     - name: Ubuntu
       versions:
-        - 16
-        - 18
-        - 20
+        - bionic
+        - focal
+        - xenial
   galaxy_tags:
     - database
     - sql
