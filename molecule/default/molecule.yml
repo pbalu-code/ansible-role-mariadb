@@ -6,7 +6,7 @@ driver:
   name: docker
 
 lint: |
-  yamllint .
+  yamllint -c molecule/common/yamllint.yml .
   ansible-lint -v .
 
 platforms:

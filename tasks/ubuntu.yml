@@ -21,13 +21,13 @@
 - name: Install Install MariaDB
   apt:
     name: "{{ mariadb_packages }}"
-    state: latest
-    update_cache: yes
+    state: present
+    update_cache: true
   tags: mariadb
 
 - name: Install MySQL-python
   apt:
-    name: "{{ (ansible_python_interpreter == 'python3') | ternary('python3-pymysql', 'python-pymysql') }}"
-    state: latest
+    name: "{{ ansible_python.version.major is version('3', '=') | ternary('pyt\
+    hon3-pymysql', 'python-pymysql') }}"
+    state: present
   tags: mariadb
-

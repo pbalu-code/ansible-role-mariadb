@@ -17,7 +17,7 @@
         autoset_open_files_limit:
         max-connections: '20'
       mysqld:
-        language: /usr/share/mysql/dutch
+        language: /usr/local/share/mysql/english
     mariadb_configure_swappiness: true
     mariadb_swappiness: '10'
     mariadb_databases:
@@ -36,4 +36,4 @@
         priv: 'app2db.*:ALL'
         host: '192.168.56.%'
   roles:
-    - role: bertvv.mariadb
+    - role: ansible-role-mariadb
