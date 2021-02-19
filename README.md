@@ -41,6 +41,14 @@ None of the variables below are required. When not defined by the user, the [def
 | `mariadb_users`                | []              | List of dicts specifying the users to be added. See below for details.                                       |
 | `mariadb_version`              | '10.4'          | The version of MariaDB to be installed. Default is the current stable release.                               |
 
+####mariadb_databases  
+| Variable                       | Default         | Comments                                   |
+| :---                           | :---            | :---                                                              |
+| `name`        | 'dbname'             | Name of the database to be created                                            |
+| `init_script`* | '/path/to/file.sql' | Path to the SQL dump |
+| `encoding`*    | 'utf8mb4'*            | Database character set (>= v3.1.2)|
+`*` - Optional
+
 #### Remarks
 
 (1) Installing MariaDB from the default yum repository can be very slow (some users reported more than 10 minutes). The variable `mariadb_mirror` allows you to specify a custom download mirror closer to your geographical location that may speed up the installation process. E.g.:

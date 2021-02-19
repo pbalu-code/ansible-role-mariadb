@@ -2,6 +2,10 @@
 
 This file contains al notable changes to the mariadb Ansible role.
 
+#3.1.2 - 2021-02-19
+- Added database encoding option support.
+
+
 #3.1.1 - 2020-07-13
 
 - Added Ubuntu 16,18,20 support. (Also the testing releases: 17,19)

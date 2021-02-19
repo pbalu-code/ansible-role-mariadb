@@ -16,6 +16,7 @@
     login_user: root
     login_password: "{{ mariadb_root_password }}"
     login_unix_socket: "{{ mariadb_socket }}"
+    encoding: "{{ item.encoding | default(omit) }}"
     state: present
   with_items: "{{ mariadb_databases }}"
   register: db_creation
