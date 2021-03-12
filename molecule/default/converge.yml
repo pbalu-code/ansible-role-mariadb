@@ -22,8 +22,10 @@
     mariadb_databases:
       - name: emptydb
       - name: app1db
+        encoding: utf8mb4
         init_script: ../common/init.sql
       - name: app2db
+        encoding: utf8
         init_script: ../common/init.sql
     mariadb_users:
       - name: app1usr
@@ -35,4 +37,4 @@
         priv: 'app2db.*:ALL'
         host: '172.17.%'
   roles:
-    - role: bertvv.mariadb
+    - role: ansible-role-mariadb
