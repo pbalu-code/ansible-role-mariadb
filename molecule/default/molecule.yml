@@ -40,16 +40,17 @@ platforms:
     tty: true
     environment:
       container: docker
-  - name: dbubuntu20
-    hostname: dbubuntu20
-    image: "geerlingguy/docker-ubuntu2004-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    tty: true
-    environment:
-      container: docker
+#  - name: dbubuntu20
+#    hostname: dbubuntu20
+#    image: "geerlingguy/docker-ubuntu2004-ansible:latest"
+#    #image: "jrei/systemd-ubuntu:20.04"
+#    command: ${MOLECULE_DOCKER_COMMAND:-""}
+#    volumes:
+#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+#    privileged: true
+#    tty: true
+#    environment:
+#      container: docker
 provisioner:
   name: ansible
   env:
