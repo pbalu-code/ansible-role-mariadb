@@ -1,8 +1,7 @@
-# Forked from https://github.com/bertvv/ansible-role-mariadb
 ---
 galaxy_info:
   role_name: mariadb
-  author: pbalu
+  author: Bert Van Vreckem
   description: Manage MariaDB on a RedHat based and Ubuntu Linux distribution.
   license: BSD
   min_ansible_version: 2.9
