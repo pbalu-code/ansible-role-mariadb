@@ -34,8 +34,8 @@ install:
 before_script:
   # Renames directory to make it match with role name on Ansible Galaxy
   - cd ../
-  - mv ansible-role-$ROLE_NAME bertvv.$ROLE_NAME
-  - cd bertvv.$ROLE_NAME
+  - mv ansible-role-$ROLE_NAME pbalu.$ROLE_NAME
+  - cd pbalu.$ROLE_NAME
 
 script:
   # Run molecule test
