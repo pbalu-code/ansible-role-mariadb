@@ -45,6 +45,7 @@ platforms:
 
 provisioner:
   name: ansible
-
+  env:
+    ANSIBLE_ROLES_PATH: "../../.cache/roles"
 verifier:
   name: ansible

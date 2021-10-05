@@ -1,6 +1,5 @@
 # roles/mariadb/defaults/main.yml
 ---
-
 mariadb_databases: []
 mariadb_users: []
 mariadb_root_password: ''

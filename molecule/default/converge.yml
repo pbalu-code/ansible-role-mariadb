@@ -36,5 +36,7 @@
         password: 'tytsHeab=3'
         priv: 'app2db.*:ALL'
         host: '172.17.%'
-  roles:
-    - role: ansible-role-mariadb
+  tasks:
+    - name: Include My Mariadb
+      include_role:
+        name: pbalu.mariadb
