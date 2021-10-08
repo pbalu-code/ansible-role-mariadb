@@ -12,6 +12,7 @@
       - gpg-agent
     update_cache: true
     state: present
+  tags: mariadb
 
 - name: Add an Apt signing key from URL
   apt_key:
