@@ -6,10 +6,14 @@
   when: ansible_python_interpreter is not defined
   tags: mariadb
 
-- name: GPG-Agent
+- name: GPG-Agent and tools
   apt:
     name:
       - gpg-agent
+      - add-apt-key
+      - software-properties-common
+      - dirmngr
+      - apt-transport-https
     update_cache: true
     state: present
   tags: mariadb
@@ -19,6 +23,18 @@
     url: "{{ mariadb_pgp_key }}"
     state: present
   tags: mariadb
+
+- name: Set mariadb preference for apt
+  blockinfile:
+    block: |
+      Package: *
+      Pin: origin downloads.mariadb.com
+      Pin-Priority: 1000
+    create: yes
+    path: /etc/apt/preferences.d/mariadb-enterprise.pref
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: Add official MariaDB repository
   apt_repository:
