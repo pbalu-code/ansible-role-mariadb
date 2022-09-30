@@ -1,0 +1,17 @@
+# postgresql/molecule/tests/lint.yml
+---
+skip_list:
+  - 'command-instead-of-shell'
+  - 'role-name'
+warn_list:
+  - 'package-latest'
+  - 'meta-no-info'
+  - 'meta-incorrect'
+  - 'meta-no-tags'
+  - 'no-handler'
+  - schema[tasks]
+
+exclude_paths:
+  - .idea/
+  - venv/
+  - .cache/

@@ -7,7 +7,7 @@ driver:
 
 lint: |
   yamllint -v -c molecule/common/yamllint.yml .
-  ansible-lint -v .
+  ansible-lint -v -c molecule/common/lint.yml .
 
 platforms:
   - name: dbcentos7
@@ -20,16 +20,16 @@ platforms:
     tty: true
     environment:
       container: docker
-  - name: dbcentos8
-    hostname: dbcentos8
-    image: "geerlingguy/docker-centos8-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-    privileged: true
-    tty: true
-    environment:
-      container: docker
+#  - name: dbrocky8
+#    hostname: dbrocky8
+#    image: "geerlingguy/docker-rockylinux8-ansible:latest"
+#    command: ${MOLECULE_DOCKER_COMMAND:-""}
+#    volumes:
+#      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+#    privileged: true
+#    tty: true
+#    environment:
+#      container: docker
   - name: dbubuntu18
     hostname: dbubuntu18
     image: "geerlingguy/docker-ubuntu1804-ansible:latest"

@@ -2,7 +2,7 @@
 ---
 
 - name: Remove the test database
-  mysql_db:
+  community.mysql.mysql_db:
     name: test
     login_user: root
     login_password: "{{ mariadb_root_password }}"
@@ -11,7 +11,7 @@
   tags: mariadb
 
 - name: Create user defined databases
-  mysql_db:
+  community.mysql.mysql_db:
     name: "{{ item.name }}"
     login_user: root
     login_password: "{{ mariadb_root_password }}"
@@ -29,19 +29,19 @@
 # That's not the case here, so the linter warning is ignored.
 
 - name: Copy database init scripts
-  template:  # noqa 503
+  ansible.builtin.template:  # noqa 503
     src: "{{ item.item.init_script }}"
-    dest: "/tmp/{{ item.item.init_script|basename }}"
+    dest: "/tmp/{{ item.item.init_script | basename }}"
     mode: '0600'
   with_items: "{{ db_creation.results }}"
   when: item.changed and item.item.init_script is defined
   tags: mariadb
 
 - name: Initialise databases
-  mysql_db:  # noqa 503
+  community.mysql.mysql_db:  # noqa 503
     name: "{{ item.item.name }}"
     state: import
-    target: "/tmp/{{ item.item.init_script|basename }}"
+    target: "/tmp/{{ item.item.init_script | basename }}"
     login_user: root
     login_password: "{{ mariadb_root_password }}"
     login_unix_socket: "{{ mariadb_socket }}"
@@ -51,8 +51,8 @@
 #  debugger: always
 
 - name: Delete init scripts from the server
-  file:  # noqa 503
-    name: "/tmp/{{ item.item.init_script|basename }}"
+  ansible.builtin.file:  # noqa 503
+    name: "/tmp/{{ item.item.init_script | basename }}"
     state: absent
   with_items: "{{ db_creation.results }}"
   when: item.changed and item.item.init_script is defined

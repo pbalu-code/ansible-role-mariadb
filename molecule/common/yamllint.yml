@@ -3,6 +3,7 @@ extends: default
 
 ignore: |
   molecule/tests/libs/
+  venv/
 #  all/this/directory/
 #  *.template.yaml
 rules:
