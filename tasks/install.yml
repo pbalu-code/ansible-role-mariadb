@@ -1,14 +1,15 @@
 # roles/mariadb/tasks/install.yml
 ---
 - name: Add official MariaDB repository
-  template:
+  ansible.builtin.template:
     src: etc_yum.repos.d_mariadb.repo.j2
     dest: /etc/yum.repos.d/MariaDB.repo
     mode: 0644
   tags: mariadb
 
 - name: Create daemon group with specified gid
-  group:
+  # possible ambiguous replacement: group : ansible.builtin.group | awx.awx.group | microsoft.ad.group
+  ansible.builtin.group:
     name: "{{ mariadb_system_user.name }}"
     gid: "{{ mariadb_system_user.gid }}"
     system: true
@@ -16,7 +17,8 @@
   tags: mariadb
 
 - name: Create daemon user with specified uid
-  user:
+  # possible ambiguous replacement: user : ansible.builtin.user | awx.awx.user | cisco.dnac.user | inspur.ispim.user | inspur.sm.user | lowlydba.sqlserver.user | microsoft.ad.user | sensu.sensu_go.user | theforeman.foreman.user | vultr.cloud.user
+  ansible.builtin.user:
     name: "{{ mariadb_system_user.name }}"
     uid: "{{ mariadb_system_user.uid }}"
     system: true
@@ -28,13 +30,13 @@
   tags: mariadb
 
 - name: Install packages
-  package:
+  ansible.builtin.package:
     name: "{{ mariadb_packages }}"
     state: present
   tags: mariadb
 
 - name: Install python moduls for ansible Python < 3 Centos 7
-  package:
+  ansible.builtin.package:
     name: "MySQL-python"
     state: present
   when:
@@ -44,7 +46,7 @@
   tags: mariadb
 
 - name: Install python moduls for ansible Python < 3.8
-  package:
+  ansible.builtin.package:
     name: "{{ ansible_python.version.major is version('3', '=') | ternary('pyt\
     hon3-PyMySQL', 'python2-PyMySQL') }}"
     state: present
@@ -55,7 +57,7 @@
   tags: mariadb
 
 - name: Install python moduls for ansible Python 3.8+
-  package:
+  ansible.builtin.package:
     name: python38-PyMySQL
     state: present
   when:

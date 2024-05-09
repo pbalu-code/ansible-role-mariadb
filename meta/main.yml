@@ -19,6 +19,7 @@ galaxy_info:
         - bionic
         - focal
         - xenial
+        - jammy
   galaxy_tags:
     - database
     - sql

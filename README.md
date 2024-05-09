@@ -20,6 +20,10 @@ Do you use/like this role? Please consider giving it a star. If you [rate this r
 
 No specific requirements
 
+## Supported OS:
+- Ubuntu 18 - 22
+- Centos 7 
+
 ## Role Variables
 
 None of the variables below are required. When not defined by the user, the [default values](defaults/main.yml) are used.
@@ -27,7 +31,7 @@ None of the variables below are required. When not defined by the user, the [def
 ### Basic configuration
 
 | Variable                       | Default         | Comments                                                                                                     |
-| :---                           | :---            | :---                                                                                                         |
+| :---                           |:----------------| :---                                                                                                         |
 | `mariadb_bind_address`         | '127.0.0.1'     | Set this to the IP address of the network interface to listen on, or '0.0.0.0' to listen on all interfaces.  |
 | `mariadb_configure_swappiness` | true            | When `true`, this role will set the "swappiness" value (see `mariadb_swappiness`.                            |
 | `mariadb_custom_cnf`           | {}              | Dictionary with custom configuration.                                                                        |
@@ -39,7 +43,7 @@ None of the variables below are required. When not defined by the user, the [def
 | `mariadb_service`              | mariadb         | Name of the service (should e.g. be 'mysql' on CentOS for MariaDB 5.5)                                       |
 | `mariadb_swappiness`           | '0'             | "Swappiness" value (string). System default is 60. A value of 0 means that swapping out processes is avoided.|
 | `mariadb_users`                | []              | List of dicts specifying the users to be added. See below for details.                                       |
-| `mariadb_version`              | '10.4'          | The version of MariaDB to be installed. Default is the current stable release.                               |
+| `mariadb_version`              | '10.6'          | The version of MariaDB to be installed. Default is the current stable release.                               |
 
 ####mariadb_databases  
 | Variable                       | Default         | Comments                                   |

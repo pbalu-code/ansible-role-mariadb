@@ -18,14 +18,14 @@ platforms:
       - network_name: private_network
         auto_config: true
         ip: "192.168.56.76"
-  - name: dbc80
-    box: "bento/centos-8"
-    interfaces:
-      - network_name: private_network
-        auto_config: true
-        ip: "192.168.56.80"
-  - name: dbu18
-    box: "ubuntu/bionic64"
+#   - name: dbc80
+#     box: "bento/centos-8"
+#     interfaces:
+#       - network_name: private_network
+#         auto_config: true
+#         ip: "192.168.56.80"
+  - name: dbu22
+    box: "ubuntu/jammy64"
     interfaces:
       - network_name: private_network
         auto_config: true
@@ -45,7 +45,7 @@ platforms:
 
 provisioner:
   name: ansible
-  env:
-    ANSIBLE_ROLES_PATH: "../../.cache/roles"
+#   env:
+#     ANSIBLE_ROLES_PATH: "../../.cache/roles"
 verifier:
   name: ansible

@@ -1,13 +1,13 @@
 # roles/mariadb/tasks/ubuntu.yml
 ---
 - name: Set discovered Ansible Python interpreter.
-  set_fact:
+  ansible.builtin.set_fact:
     ansible_python_interpreter: "{{ ansible_facts.python.executable }}"
   when: ansible_python_interpreter is not defined
   tags: mariadb
 
 - name: GPG-Agent
-  apt:
+  ansible.builtin.apt:
     name:
       - gpg-agent
     update_cache: true
@@ -15,26 +15,26 @@
   tags: mariadb
 
 - name: Add an Apt signing key from URL
-  apt_key:
+  ansible.builtin.apt_key:
     url: "{{ mariadb_pgp_key }}"
     state: present
   tags: mariadb
 
 - name: Add official MariaDB repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ mariadb_apt_repositories }}"
     state: present
   tags: mariadb
 
 - name: Install Install MariaDB
-  apt:
+  ansible.builtin.apt:
     name: "{{ mariadb_packages }}"
     state: present
     update_cache: true
   tags: mariadb
 
 - name: Install MySQL-python
-  apt:
+  ansible.builtin.apt:
     name: "{{ ansible_python.version.major is version('3', '=') | ternary('pyt\
     hon3-pymysql', 'python-pymysql') }}"
     state: present

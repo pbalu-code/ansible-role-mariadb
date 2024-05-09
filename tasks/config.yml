@@ -1,7 +1,7 @@
 # roles/mariadb/tasks/config.yml
 ---
 - name: Install server config file
-  template:
+  ansible.builtin.template:
     src: etc_my.cnf.d_server.cnf.j2
     dest: "{{ mariadb_config_server }}"
     mode: 0664
@@ -9,7 +9,7 @@
   tags: mariadb
 
 - name: Install network config file
-  template:
+  ansible.builtin.template:
     src: etc_my.cnf.d_network.cnf.j2
     dest: "{{ mariadb_config_network }}"
     mode: 0664
@@ -17,7 +17,7 @@
   tags: mariadb
 
 - name: Install custom config file
-  template:
+  ansible.builtin.template:
     src: etc_my.cnf.d_custom.cnf.j2
     dest: "{{ mariadb_config_custom }}"
     mode: 0664
@@ -26,13 +26,13 @@
   tags: mariadb
 
 - name: Check if sysctl executable exists. If not, swappiness cannot be set!
-  stat:
+  ansible.builtin.stat:
     path: /usr/sbin/sysctl
   register: sysctl_check
   tags: mariadb
 
 - name: Configure swappiness
-  sysctl:
+  ansible.posix.sysctl:
     name: vm.swappiness
     value: "{{ mariadb_swappiness }}"
     state: present
@@ -43,7 +43,7 @@
 
 # SELinux context mysqld_log_t is default for /var/log/mariadb
 - name: Create log directory
-  file:
+  ansible.builtin.file:
     state: directory
     path: /var/log/mariadb
     owner: mysql
@@ -55,7 +55,7 @@
   tags: mariadb
 
 - name: Configure logrotate
-  template:
+  ansible.builtin.template:
     src: etc_logrotate.d_mysql.j2
     dest: /etc/logrotate.d/mysql
     mode: 0664
@@ -66,7 +66,7 @@
     - mariadb_logrotate.configure|bool
 
 - name: Ensure service is started
-  service:
+  ansible.builtin.service:
     name: "{{ mariadb_service }}"
     state: started
     enabled: true

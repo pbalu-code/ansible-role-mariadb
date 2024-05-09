@@ -2,7 +2,7 @@
 - name: Molecule test playbook
   hosts: all
   vars:
-    mariadb_mirror: 'mariadb.mirror.nucleus.be/yum'
+    mariadb_mirror: 'rpm.mariadb.org'
     mariadb_bind_address: '0.0.0.0'
     mariadb_root_password: 'atOrryag&'
     mariadb_server_cnf:

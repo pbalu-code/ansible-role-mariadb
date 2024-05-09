@@ -1,5 +1,9 @@
 # Change log
 
+#3.2.0 - 2024-05-09
+- Ubuntu 22.04 support
+- FQCN update
+
 This file contains al notable changes to the mariadb Ansible role.
 
 #3.1.2 - 2021-02-19
